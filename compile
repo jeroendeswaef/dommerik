@@ -1,0 +1,1 @@
+emcc simple.c -I/usr/local/include ../jsmn/jsmn.c
