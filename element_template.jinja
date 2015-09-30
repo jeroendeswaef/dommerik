@@ -1,0 +1,6 @@
+StrMap* {{ objVar }}Attr;
+{{ objVar }}Attr = sm_new({{ attrs|length }});
+{% for item in attrs %}
+    sm_put({{ objVar }}Attr, "{{ item.name}}", "{{ item.value }}");
+{% endfor %}
+NodeOBJ {{ objVar }} = newNodeOBJ({{ objVar }}Attr, {{ "\"%s\""|format(parentUuid)|replace("\"None\"", "NULL") }}, 1);

@@ -13,12 +13,21 @@ class CJSONListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CJSONParser#myobject.
-    def enterMyobject(self, ctx):
+    # Enter a parse tree produced by CJSONParser#AnObject.
+    def enterAnObject(self, ctx):
         pass
 
-    # Exit a parse tree produced by CJSONParser#myobject.
-    def exitMyobject(self, ctx):
+    # Exit a parse tree produced by CJSONParser#AnObject.
+    def exitAnObject(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by CJSONParser#EmptyObject.
+    def enterEmptyObject(self, ctx):
+        pass
+
+    # Exit a parse tree produced by CJSONParser#EmptyObject.
+    def exitEmptyObject(self, ctx):
         pass
 
 
@@ -31,12 +40,21 @@ class CJSONListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CJSONParser#array.
-    def enterArray(self, ctx):
+    # Enter a parse tree produced by CJSONParser#ArrayOfValues.
+    def enterArrayOfValues(self, ctx):
         pass
 
-    # Exit a parse tree produced by CJSONParser#array.
-    def exitArray(self, ctx):
+    # Exit a parse tree produced by CJSONParser#ArrayOfValues.
+    def exitArrayOfValues(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by CJSONParser#EmptyArray.
+    def enterEmptyArray(self, ctx):
+        pass
+
+    # Exit a parse tree produced by CJSONParser#EmptyArray.
+    def exitEmptyArray(self, ctx):
         pass
 
 

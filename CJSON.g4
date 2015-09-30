@@ -9,15 +9,15 @@ json:   myobject
     ;
 
 myobject
-    :   '{' pair (',' pair)* '}'
-    |   '{' '}' // empty myobject
+    :   '{' pair (',' pair)* '}'   # AnObject
+    |   '{' '}'                    # EmptyObject
     ;
     
 pair:   STRING ':' value ;
 
 array
-    :   '[' value (',' value)* ']'
-    |   '[' ']' // empty array
+    :   '[' value (',' value)* ']' # ArrayOfValues
+    |   '[' ']'                    # EmptyArray
     ;
 
 value

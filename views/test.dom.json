@@ -1,0 +1,5 @@
+[{ "_tagName": "div", "class": "box" }, [
+  { "_tagName": "input",  "type": "text" },
+  { "_tagName": "button", "_text": "Click me" }
+],
+{ "_tagName": "div", "class": "box2" }]

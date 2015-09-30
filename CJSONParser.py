@@ -144,6 +144,22 @@ class CJSONParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+
+        def getRuleIndex(self):
+            return CJSONParser.RULE_myobject
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+
+    class AnObjectContext(MyobjectContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a CJSONParser.MyobjectContext)
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
         def pair(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(CJSONParser.PairContext)
@@ -151,17 +167,29 @@ class CJSONParser ( Parser ):
                 return self.getTypedRuleContext(CJSONParser.PairContext,i)
 
 
-        def getRuleIndex(self):
-            return CJSONParser.RULE_myobject
-
         def enterRule(self, listener:ParseTreeListener):
             if isinstance( listener, CJSONListener ):
-                listener.enterMyobject(self)
+                listener.enterAnObject(self)
 
         def exitRule(self, listener:ParseTreeListener):
             if isinstance( listener, CJSONListener ):
-                listener.exitMyobject(self)
+                listener.exitAnObject(self)
 
+
+    class EmptyObjectContext(MyobjectContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a CJSONParser.MyobjectContext)
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if isinstance( listener, CJSONListener ):
+                listener.enterEmptyObject(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if isinstance( listener, CJSONListener ):
+                listener.exitEmptyObject(self)
 
 
 
@@ -174,6 +202,7 @@ class CJSONParser ( Parser ):
             self.state = 27
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
+                localctx = CJSONParser.AnObjectContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 14
                 self.match(CJSONParser.T__0)
@@ -196,6 +225,7 @@ class CJSONParser ( Parser ):
                 pass
 
             elif la_ == 2:
+                localctx = CJSONParser.EmptyObjectContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 25
                 self.match(CJSONParser.T__0)
@@ -265,6 +295,22 @@ class CJSONParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+
+        def getRuleIndex(self):
+            return CJSONParser.RULE_array
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+
+    class ArrayOfValuesContext(ArrayContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a CJSONParser.ArrayContext)
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
         def value(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(CJSONParser.ValueContext)
@@ -272,17 +318,29 @@ class CJSONParser ( Parser ):
                 return self.getTypedRuleContext(CJSONParser.ValueContext,i)
 
 
-        def getRuleIndex(self):
-            return CJSONParser.RULE_array
-
         def enterRule(self, listener:ParseTreeListener):
             if isinstance( listener, CJSONListener ):
-                listener.enterArray(self)
+                listener.enterArrayOfValues(self)
 
         def exitRule(self, listener:ParseTreeListener):
             if isinstance( listener, CJSONListener ):
-                listener.exitArray(self)
+                listener.exitArrayOfValues(self)
 
+
+    class EmptyArrayContext(ArrayContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a CJSONParser.ArrayContext)
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if isinstance( listener, CJSONListener ):
+                listener.enterEmptyArray(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if isinstance( listener, CJSONListener ):
+                listener.exitEmptyArray(self)
 
 
 
@@ -295,6 +353,7 @@ class CJSONParser ( Parser ):
             self.state = 46
             la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
+                localctx = CJSONParser.ArrayOfValuesContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 33
                 self.match(CJSONParser.T__4)
@@ -317,6 +376,7 @@ class CJSONParser ( Parser ):
                 pass
 
             elif la_ == 2:
+                localctx = CJSONParser.EmptyArrayContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 44
                 self.match(CJSONParser.T__4)
