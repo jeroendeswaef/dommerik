@@ -1,0 +1,10 @@
+*.o
+*.a
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+Makefile
+__pycache__
+dommerik
+dommerik.js
+

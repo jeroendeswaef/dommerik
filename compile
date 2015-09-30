@@ -1,1 +1,1 @@
-emcc simple.c -I/usr/local/include ../jsmn/jsmn.c
+emcc simple.c -I/usr/local/include ../jsmn/jsmn.c -O2
