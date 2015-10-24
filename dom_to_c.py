@@ -15,13 +15,19 @@ class MyEmitter(CJSONListener):
         self.currentObjUuid = None
         self.parents = []
 
+    def getId(self, uuid):
+        return 'o' + uuid
+
     def enterAnObject(self, ctx: CJSONParser.AnObjectContext):
         parent = None
         if len(self.parents) > 0:
             parent = self.parents[-1]
+            if parent != None:
+                parent = self.getId(parent)
+
         #print("enter obj", "parent: ", parent)
         objUuid = str(uuid.uuid4()).split('-')[0]
-        objVar = 'o' + objUuid;
+        objVar = self.getId(objUuid);
         #print(objUuid)
         self.currentObjUuid = objUuid;
         items = []
